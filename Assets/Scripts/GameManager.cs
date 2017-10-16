@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 
 	public static Action OnRestart;
 
-	public GameObject GameOverPrefab;
+	public GameObject GameOverCanvas;
 	GameObject enemy;
 	AudioSource source;
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
 		if (OnRestart != null)
 			OnRestart();
 
-		GameOverPrefab.SetActive(false);
+		GameOverCanvas.SetActive(false);
 		//Instantiate(enemy, new Vector3(0, 0, 5), Quaternion.identity);
 		enemy.SetActive(true);
 		enemy.GetComponent<EnemyControl>().TeleportEnemy();
@@ -51,9 +51,9 @@ public class GameManager : MonoBehaviour {
 	void SpawnGameOverCanvas()
 	{
 		//GameObject tmp = Instantiate(GameOverPrefab, transform.position, Quaternion.identity);
-		GameOverPrefab.SetActive(true);
-		GameOverPrefab.transform.LookAt(Camera.main.transform);
-		GameOverPrefab.transform.Rotate(new Vector3(0, 180, 0));
+		GameOverCanvas.SetActive(true);
+		GameOverCanvas.transform.LookAt(Camera.main.transform);
+		GameOverCanvas.transform.Rotate(new Vector3(0, 180, 0));
 		//GameOverPrefab.transform.Translate(Vector3.forward * 5);
 	}
 }
